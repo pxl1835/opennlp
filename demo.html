@@ -13,9 +13,14 @@
              margin: 0;
              border: 0;
              padding: 0;
+             /* position: relative; */
           }
-        li {
-            display: inline-block; /*remove the numbers for <ol>*/
+          /* #container {
+            position: relative;
+            z-index: -100;
+          } */
+        /* li {
+            display: inline-block; /*remove the numbers for <ol>/
             width:100px;
             position: relative;
             vertical-align:text-top;
@@ -27,46 +32,61 @@
     
         ol li:hover ol li {
             display: block;
-        }    
+        }     */
     </style>
-<div id="continer" style="width:70%;margin-left:auto;margin-right:auto;">
-        <div id="header" style="background-color:red;width:100%;height:100px;">
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto; padding: 20px; background-color: maroon; border: 30px solid green;">
+
+        <div id="header" style="background-color:red;
+                                /* width:70%;
+                                margin-left: auto;
+                                margin-right: auto; */
+                                height:100px;">
             <ol style="text-align:center;">
                 <li style="margin-right:50px;">
                     <a style="text-decoration:none;" href="#"><b>Rutgers</b></a>
-                    <ol>
+                    <!-- <ol>
                         <li>
                             <a href="https://rutgers.edu" target="_blank">Ruters main site</a>
                         </li>
                         <li>  
                             <a href="#">menu item2</a>
                         </li>
-                    </ol>
+                    </ol> -->
                 </li>
                 <li>
                     <a style="text-decoration:none;" href="#"><b>NJIT</b></a>
-                    <ol>
+                    <!-- <ol>
                         <li>
                             <a href="https://njit.edu" target="_blank">NJIT main site</a>
                         </li>
                         <li>  
                             <a href="#">menu item2</a>
                         </li>
-                    </ol>          
+                    </ol>           -->
                 </li>
             </ol>
         </div>   
-        <div id="content" style="background-color:rgb(0, 255, 162);width:100%;height:300px;">
-                <p>
+        <div id="content" style="/*font-size:0;*/background-color:rgb(0, 255, 162);
+                                 /* width:70%;
+                                 margin-left: auto;
+                                 margin-right: auto; */
+                                 height:300px;">
+                <!-- <p>
                     JOIN US IN NEW YORK CITY!
-                </p>
+                </p> -->
+                <div style="display:inline-block; width:49%; height:100%; background-color: white;"></div><div style="display:inline-block; width:49%; height:100%; background-color: yellow;"></div>
         </div>   
-        <div id="footer" style="text-align:center;color:white;background-color:black;width:100%;height:100px;">
+        <div id="footer" style="text-align:center;
+                                color:white;
+                                background-color:black;
+                                /* width:70%;
+                                margin-left: auto;
+                                margin-right: auto; */
+                                height:100px;">
             <p>CONNECT WITH US</p>
             <p>2022 RIT, All rights reserved Privacy Policy | Terms of Use</p>
         </div>
-        
-        
+                
 </div>
 </body>
 </html>
