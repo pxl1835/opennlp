@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Element Demo</title>
+  <title>
+    This file demonstrates:
+
+      1. Parent - Child html element relationship:
+         a. A parent element groups its child(ren) element(s) 
+             example: 
+                The "container" <div>(id="container") below
+                groups the 
+                  <div id="header" ...>Drag here to move</div>
+                  <h1 ...>Draggable Parent-Child/Layered Elements Demo</h1>
+                which(<div> + <h1>) intuitively move along as a group with the "container" <div> 
+                when the "header" <div> is dragged. 
+                The moving action is done by the javascript on the "container" <div>.
+         b. A child element is in front of its parent element by default, not physically part of
+            its parent,  which can be thought of as 
+               'the child element devides/blocks/is inside of its parent'. 
+               example:
+                  If the "container" <div> is a part of the <body> element physically,
+                  after moving away the "container" <div> from a spot, it would leave
+                  the <body> element a blank/hole where the "container" <div> was,
+                  evidently we do not observe the mentioned phenomenon, 
+                  so concluded that the "container" <div> 
+                  must be in front of the <body>, not part of the <body> element.
+
+      2.  Some CSS usages. Please see the comments in the <style></style> element below.
+      3.  The use of javascript in the <script></script> element to achive dynamic or real time functionalities.    
+  </title>
+
+  <style>
+    body {
+      background-color: lightblue;
+    }
+    #container {
+      position: absolute;
+      background-color: #f1f1f1;
+      text-align: center;
+      border: 1px solid #d3d3d3;
+      left: 35%;
+      top: 30%;
+      width: 30%;
+    }
+    #header {
+      margin: 30px;   /* comment out to observe by adding a /* before the word margin on this line */
+      padding: 10px;  /* comment out to observe */
+      cursor: move;   /* comment out to observe */
+      /* border: 15px solid goldenrod;  /* comment in to observe */
+      background-color: #2196F3;
+      color: #fff;
+    }
+    h1 {
+      /* border: 15px dotted red;  /* comment in to observe */
+      text-align: center;
+    }  
+  </style>
+  <script>
+    window.onload = function () {
+      //Make the DIV element draggagle after the page load:
+       dragElement(document.getElementById("container"));
+    };
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById("header")) {
+        /* if present, the header is where you move the DIV from:*/
+        document.getElementById("header").onmousedown = dragMouseDown;
+      } else {
+        /* otherwise, move the DIV from anywhere inside the DIV:*/
+        elmnt.onmousedown = dragMouseDown;
+      }
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        o.value =  "c.offsetTop=" + c.offsetTop  + ",  c.offsetLeft=" +  c.offsetLeft
+      }
+      function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+    <div id="container" title="container/parent div element">
+      <div id="header" title="child header div element">Drag here to move</div>
+      <h1 title="child h1 div">Draggable Parent-Child/Layered Elements Demo</h1>
+      <!-- <h1>Click and hold the mouse button down while moving the DIV element</h1> -->
+      <!-- <p>Parent DIV</p>
+      <p>height</p>
+      <p>change</p> -->
+    </div>
+
+    <button id="btn">Click</button>
+    <input type="text" style="width:200px" id="stdout">
+
+    <script>
+      let b = document.getElementById("btn");
+      let o = document.getElementById("stdout");
+      let c = document.getElementById("container");
+  
+      b.addEventListener("click", function(){
+          o.value =  "c.offsetTop=" + c.offsetTop  + ",  c.offsetLeft=" +  c.offsetLeft 
+          c.style.left = (c.offsetLeft - 5) + "px";
+      });
+    </script>
+</body>
+
+
+</html>
